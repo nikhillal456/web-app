@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import pyodbc
 import os
 
@@ -14,6 +14,9 @@ def get_db_connection():
         f"PWD={os.environ['SQLSERVER_PASS']};"
     )
     return conn
+@app.route('/')
+def index():
+    return render_template('index.html')  # Serve the HTML file
 
 @app.route('/submit', methods=['POST'])
 def submit_data():
