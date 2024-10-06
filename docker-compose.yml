@@ -1,0 +1,22 @@
+
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - SQLSERVER_IP=35.237.112.232
+      - SQLSERVER_DB=flask_db
+      - SQLSERVER_USER=sqlserver
+      - SQLSERVER_PASS=Nikhil@1234
+    depends_on:
+      - frontend
+

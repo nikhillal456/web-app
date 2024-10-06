@@ -17,12 +17,12 @@ def get_db_connection():
 
 @app.route('/submit', methods=['POST'])
 def submit_data():
-    value1 = request.json.get('value1')
-    value2 = request.json.get('value2')
+    value1 = request.json.get('Value1')
+    value2 = request.json.get('Value2')
     
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO your_table_name (column1, column2) VALUES (?, ?)", (value1, value2))
+    cursor.execute("INSERT INTO DataEntries (Value1, Value2) VALUES (?, ?)", (value1, value2))
     conn.commit()
     cursor.close()
     conn.close()
@@ -31,4 +31,4 @@ def submit_data():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
+i
