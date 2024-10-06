@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Submission</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/script.js" defer></script>  <!-- Add 'defer' attribute -->
 </head>
 <body>
     <h1>Capture Values</h1>
-    <form id="valueForm">
+    <form id="dataForm">  <!-- Change ID to match JavaScript -->
         <label for="value1">Value 1:</label>
         <input type="text" id="value1" required>
         <br>
@@ -17,7 +18,11 @@
         <br>
         <button type="submit">Submit</button>
     </form>
-    <script src="script.js"></script>
+
+    <button id="showDataBtn">Show Data</button>
+    <div id="dataDisplay"></div>  <!-- Container for displaying data -->
 </body>
 </html>
+
+
 
