@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: nikhil-999/backend:latest  # Replace with your GCP project ID
+        ports:
+        - containerPort: 5000  # Match with the exposed port in your Dockerfile
+        env:
+        - name: SQLSERVER_IP
+          value: "35.237.112.232"  # Replace with your SQL Server IP
+        - name: SQLSERVER_DB
+          value: "flask_db"
+        - name: SQLSERVER_USER
+          value: "sqlserver"
+        - name: SQLSERVER_PASS
+          value: "Nikhil@1234"  # Make sure to use environment variables for sensitive data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: ClusterIP  # Change to LoadBalancer if needed
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: backend
+
